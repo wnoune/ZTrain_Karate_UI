@@ -1,5 +1,5 @@
 @debug
-Feature: Login user
+Feature: User
   Karate: Run | Karate: Debug
 
     Background:
