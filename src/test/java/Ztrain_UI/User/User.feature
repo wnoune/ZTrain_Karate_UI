@@ -1,9 +1,10 @@
+
 @debug
 Feature: User
   Karate: Run | Karate: Debug
 
     Background:
-      * configure driver = { type: 'chrome', executable: 'C:\\Users\\Pawk69\\Documents\\Zenity-Offshore\\chrome.bat'}
+      * configure driver = { type: 'chrome', executable: 'D:\\Zenity\\Karate_Automation\\chrome.bat'}
       Given driver web_base_url+ '/auth/login'
       * def loginBtn = "#btn_login"
       * def errorField = ".style_messageError__LxTAG"
@@ -12,6 +13,7 @@ Feature: User
   Scenario Outline:Test successful login with credentials
     * def emailField = "#email_login"
     * def passwordField = "#password_login"
+    * def prodPage = ".style_section_title__aO_Du"
     And input(emailField,'<email>')
     And input(passwordField,'<password>')
     When click(loginBtn)
