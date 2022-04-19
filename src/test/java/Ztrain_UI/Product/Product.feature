@@ -4,7 +4,7 @@ Feature: Product
 
   Background:
     * configure driver = { type: 'chrome', executable: 'D:\\Zenity\\Karate_Automation\\chrome.bat'}
-    Given driver web_base_url+ '/home'
+    Given driver web_base_url+ '/auth/login'
     * def emailField = "#email_login"
     * def passwordField = "#password_login"
     * def loginBtn = "#btn_login"
@@ -18,14 +18,12 @@ Feature: Product
   @TEST_OF-830
   Scenario:Test Display the sheet of a product
     When scroll(article).click()
-    * waitUntil("document.readyState == 'complete'")
-    Then match driver.text(cartBtn) contains
+    Then match driver.text(cartBtn) contains "Ajouter au panier"
 
   @TEST_OF-831
   Scenario:Test Add product to cart
     When scroll(article).click()
     And click(cartBtn)
-    * waitUntil("document.readyState == 'complete'")
     Then match driver.text(cartBtn) contains "Ajouter au panier"
 
   @TEST_OF-833
@@ -34,5 +32,4 @@ Feature: Product
     * def plus = ".style_quantity_in__XmF4D"
     When click(cartIcon)
     And click(plus)
-    * waitUntil("document.readyState == 'complete'")
     Then match driver.text(cartBtn) contains "Ajouter au panier"

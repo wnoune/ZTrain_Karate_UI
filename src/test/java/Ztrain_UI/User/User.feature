@@ -14,15 +14,16 @@ Feature: User
     * def emailField = "#email_login"
     * def passwordField = "#password_login"
     * def prodPage = ".style_section_title__aO_Du"
+    * def logo = "#style_content_logo__pkvMP"
     And input(emailField,'<email>')
     And input(passwordField,'<password>')
     When click(loginBtn)
-    * waitUntil("document.readyState == 'complete'")
+    * waitForUrl('/home')
     Then match driver.url == 'https://ztrain-web.vercel.app/home'
 
       Examples:
-        |email            |password|
-        |237pk69@gmail.com|Pawk/*69|
+        |email             |password|
+        |237pk69@gmail.com |Pawk/*69|
 
   @TEST_OF-806
   Scenario:Test login and password fields required
@@ -55,10 +56,11 @@ Feature: User
     And input(emailResetField,'<email>')
     And input(passResetField,'<newPass>')
     And click(resetBtn)
+    * waitForUrl('/auth/login')
     Then match driver.text(connexion) contains "Connexion"
 
     Examples:
-      |email            |newPass |
-      |237pk69@gmail.com|Pawk/*69|
+      |email             |newPass |
+      |237pk69@gmail.com |Pawk/*69|
 
 
